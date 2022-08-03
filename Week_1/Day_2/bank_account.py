@@ -29,7 +29,7 @@ class BankAccount:
 
     #class method to print all instances 
     @classmethod
-    def all_balances(cls):
+    def all_instances(cls):
         for account in cls.all_accounts:
             print("Balance: ${:,.2f}".format(account.balance))
         
@@ -45,5 +45,4 @@ brignies_account.deposit(400).deposit(200).deposit(100).withdraw(300).yield_inte
 kens_account.deposit(3000).deposit(4080).withdraw(30).withdraw(100).withdraw(400).withdraw(2000).yield_interest().display_account_info()
 
 # NINJA BONUS: use a classmethod to print all instances of a Bank Account's info
-print("====")
-BankAccount.all_balances()
+BankAccount.all_instances()
