@@ -15,11 +15,13 @@
         </style>
     </head>
     <body>
+
         <!-- POST FORM RESULTS -->
         {% if session['name'] %}
         <h3 class="h3">Name: {{session['name']}}</h3>
         <h3 class="h3">Dojo Location: {{session['location']}}</h3>
         <h3 class="h3">Favorite Languages:</h3>
+
         <!-- CHECKBOX ANSWERS -->
             {% for language in session['favorite_languages'] %}
                 {{language}}
@@ -27,6 +29,7 @@
         <h3 class="h3">Comment: {{session['comment']}}</h3>
         {{ session.clear() or '' }}
         {% else %}
+        
         <form action="/result" method="POST">
             <!-- NAME -->
             <label class="form-label" for="name">Your Name:</label>

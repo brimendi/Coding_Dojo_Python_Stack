@@ -1,0 +1,38 @@
+CREATE 3 DOJOS:
+INSERT INTO `dojos_and_ninjas_schema`.`dojo` (`dojo_id`, `name`, `created_at`, `updated_at`) VALUES ('1', 'Seattle', NOW(), NOW());
+INSERT INTO `dojos_and_ninjas_schema`.`dojo` (`dojo_id`, `name`, `created_at`, `updated_at`) VALUES ('2', 'San Jose', NOW(), NOW());
+INSERT INTO `dojos_and_ninjas_schema`.`dojo` (`dojo_id`, `name`, `created_at`, `updated_at`) VALUES ('3', 'Chicago', NOW(),  NOW());
+
+DELETE 3 DOJOS:
+DELETE FROM dojo WHERE dojo_id = 1;
+DELETE FROM dojo WHERE dojo_id = 2;
+DELETE FROM dojo WHERE dojo_id = 3;
+
+CREATE 3 NEW DOJOS:
+INSERT INTO `dojos_and_ninjas_schema`.`dojo` (`dojo_id`, `name`, `created_at`, `updated_at`) VALUES (NULL, 'Los Angeles', NOW(), NOW());
+INSERT INTO `dojos_and_ninjas_schema`.`dojo` (`dojo_id`, `name`, `created_at`, `updated_at`) VALUES (NULL, 'Burbank', NOW(), NOW());
+INSERT INTO `dojos_and_ninjas_schema`.`dojo` (`dojo_id`, `name`, `created_at`, `updated_at`) VALUES (NULL, 'Santa Barbara', NOW(), NOW());
+
+CREATE 3 NINJAS THAT BELONG TO THE FIRST DOJO:
+INSERT INTO `dojos_and_ninjas_schema`.`ninjas` (`ninjas_id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojo_id`) VALUES (NULL, 'Bri', 'Mendieta', '23', NOW(), NOW(), '4');
+INSERT INTO `dojos_and_ninjas_schema`.`ninjas` (`ninjas_id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojo_id`) VALUES (NULL, 'Jane', 'Eyre', '28', NOW(), NOW(), '4');
+INSERT INTO `dojos_and_ninjas_schema`.`ninjas` (`ninjas_id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojo_id`) VALUES (NULL, 'Liam', 'Jones', '25', NOW(), NOW(), '4');
+
+CREATE 3 NINJAS THAT BELONG TO THE SECOND DOJO:
+INSERT INTO `dojos_and_ninjas_schema`.`ninjas` (`ninjas_id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojo_id`) VALUES (NULL, 'Katy', 'Perry', '20', NOW(), NOW(), '5');
+INSERT INTO `dojos_and_ninjas_schema`.`ninjas` (`ninjas_id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojo_id`) VALUES (NULL, 'Shakira', 'Lewis', '35', NOW(), NOW(), '5');
+INSERT INTO `dojos_and_ninjas_schema`.`ninjas` (`ninjas_id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojo_id`) VALUES (NULL, 'Oscar', 'Martinez', '40', NOW(), NOW(), '5');
+
+CREATE 3 NINJAS THAT BELONG TO THE THIRD DOJO:
+INSERT INTO `dojos_and_ninjas_schema`.`ninjas` (`ninjas_id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojo_id`) VALUES (NULL, 'Pam', 'Beesley', '25', NOW(), NOW(), '6');
+INSERT INTO `dojos_and_ninjas_schema`.`ninjas` (`ninjas_id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojo_id`) VALUES (NULL, 'Jim', 'Halpert', '26', NOW(), NOW(), '6');
+INSERT INTO `dojos_and_ninjas_schema`.`ninjas` (`ninjas_id`, `first_name`, `last_name`, `age`, `created_at`, `updated_at`, `dojo_id`) VALUES (NULL, 'Dwight', 'Shrute', '33', NOW(), NOW(), '6');
+
+RETRIEVE ALL THE NINJAS FROM THE FIRST DOJO:
+SELECT * FROM ninjas WHERE dojo_id = 4;
+
+RETRIEVE ALL THE NINJAS FROM THE LAST DOJO:
+SELECT * FROM ninjas WHERE dojo_id = 6;
+
+RETRIEVE THE LAST NINJAS DOJO:
+SELECT * FROM ninjas WHERE ninjas_id = 9;
