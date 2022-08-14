@@ -1,6 +1,7 @@
 from config.mysqlconnection import connectToMySQL
 DATABASE = "users_schema"
 
+# USER CLASS CONSTRUCTOR AND ATTRIBUTES
 class Users:
     def __init__(self, data):
         self.id = data['id']
