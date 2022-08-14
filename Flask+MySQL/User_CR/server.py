@@ -18,18 +18,18 @@ def display_one(id):
     return render_template("read_one.html", user = user)
 
 # CREATE NEW USER
-@app.route('/user/new')
+@app.route('/user/new') # first step in creating a user: input new user info page
 def new_user_form():
     return render_template('create.html')
 
 
-@app.route('/user/create', methods=['POST'])
+@app.route('/user/create', methods=['POST']) # second step in creating a user: info gets saved and redirects to show page with new user info
 def create_user():
     id = Users.create_user(request.form)
     return redirect(f'/user/{id}')
 
 # UPDATE A USER INFO 
-@app.route('/user/<int:id>/edit')
+@app.route('/user/<int:id>/edit') #first step in updating: edit page
 def edit_user(id):
     data = {
         "id" : id
@@ -37,7 +37,7 @@ def edit_user(id):
     user = Users.get_one(data)
     return render_template("edit.html", user = user)
 
-@app.route('/user/<int:id>/update', methods = ["POST"])
+@app.route('/user/<int:id>/update', methods = ["POST"]) #second step in updating: update and redirect with updates
 def update_user(id):
     data = {
         "first_name": request.form['first_name'],
