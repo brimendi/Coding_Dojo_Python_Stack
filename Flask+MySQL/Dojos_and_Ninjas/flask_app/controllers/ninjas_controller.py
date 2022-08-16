@@ -12,6 +12,6 @@ def new_ninja_form():
 # CREATE NEW NINJA ACTION- REDIRECT TO -SHOW ONE DOJO- PAGE W/ UPDATED NINJA
 @app.route('/ninja/create', methods=["POST"])
 def ninja_create():
-    ninjas_id = Ninjas.create(request.form)
+    Ninjas.create(request.form)
     Dojos.get_one_dojo(request.form)
     return redirect(f"/dojos/{request.form['dojo_id']}")
