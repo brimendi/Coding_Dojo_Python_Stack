@@ -17,11 +17,13 @@ class Users:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
     
+    #Users method for creating an account(registering)
     @classmethod
     def create(cls, data):
         query = "INSERT INTO user (first_name, last_name, email, password) VALUES(%(first_name)s, %(last_name)s, %(email)s, %(password)s);"
         return connectToMySQL(DATABASE).query_db(query,data)
     
+    #Users method for validating log in. Fetching user info by email/ if no email no can do
     @classmethod 
     def get_by_email(cls, data):
         query = "SELECT * FROM user WHERE email = %(email)s;"
@@ -30,6 +32,7 @@ class Users:
             return False
         return cls(results[0])
 
+    #REGEX validations/ flash messages for validations 
     @staticmethod
     def validate(user_data):
         is_valid = True
@@ -37,13 +40,13 @@ class Users:
             flash("First name must be at least 2 characters", "reg")
             is_valid = False
         elif not ALPHANUMERIC.match(user_data['first_name']):
-            flash("First name cannot contain special chars")
+            flash("First name cannot contain special chars", "reg")
             is_valid = False
         if len(user_data['last_name']) < 2:
             flash("Last name must be at least 2 characters", "reg")
             is_valid = False
         elif not ALPHANUMERIC.match(user_data['last_name']):
-            flash("Last name cannot contain special chars")
+            flash("Last name cannot contain special chars", "reg")
             is_valid = False
         if len(user_data['email']) < 1:
             flash("Please provide an email", "reg")
@@ -58,15 +61,12 @@ class Users:
             potential_user = Users.get_by_email(data)
             if potential_user:
                 is_valid = False
-                flash("An account already exists with this email")
-
+                flash("An account already exists with this email", "reg")         
         if len(user_data['password']) < 8:
             flash("Password must be at least 8 characters", "reg")
             is_valid = False
         elif not user_data['password'] == user_data['confirm_password']:
-            flash("Passwords don't match")
+            flash("Passwords don't match", "reg")
             is_valid = False
-
         return is_valid
-
         
