@@ -1,7 +1,7 @@
-from crypt import methods
 from flask_app import app
 from flask import render_template,redirect,request,session,flash
 from flask_app.models.user_model import Users
+from flask_app.models.recipes_model import Recipes
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt(app)
@@ -18,7 +18,9 @@ def login_and_register_form():
 def dashboard():
     if not "user_id" in session:
         return redirect('/login_and_registration')
-    return render_template("dashboard.html")
+    user = Users.get_by_id({'id': session['user_id']})
+    all_recipes = Recipes.get_all()
+    return render_template("dashboard.html", all_recipes = all_recipes, user = user)
 
 # Once registered directed to dashboard/ validating register info/ hashing password/ storing new users info in database and session
 @app.route('/users/register', methods=['POST'])

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Recipe</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Flash messages and edit recipe button  -->
+    <div class="container">
+        {% for message in get_flashed_messages() %}
+            <p class="text-danger">{{message}}</p>
+        {% endfor %}
+        <h1>Edit Recipe</h1>
+    </div>
+    <div>
+        <!-- links for home and logout  -->
+        <a href="/dashboard">back to recipes</a>
+        <a href="/users/logout">logout</a>
+    </div>
+    <div>
+        <!-- EDIT RECIPE FORM  -->
+        <form action="/recipes/{{recipe.id}}/update" method="post" >
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="{{recipe.name}}"><br>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" cols="25" rows="8">{{recipe.description}}</textarea><br>
+            <label for="instructions">Instructions:</label>
+            <textarea name="instruction" id="instruction" cols="25" rows="8">{{recipe.instruction}}</textarea><br>
+            <label for="date">Date Cooked/Made:</label>
+            <input type="date" name="date" id="date" value="{{recipe.date}}">
+            <div>
+                <!-- RADIO BUTTON VALUES  -->
+                Under 30 minutes?
+                <label for="yes">Yes</label>
+                <input type="radio" name="under_30_min" id="yes" value="1" {% if recipe.under_30_min == 1 %}checked{%endif%}>
+                <label for="no">No</label>
+                <input type="radio" name="under_30_min" id="no" value="0" {% if recipe.under_30_min == 0 %}checked{%endif%}>
+            </div>
+            <!-- SUBMIT BUTTON  -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
+</body>
+</html>
