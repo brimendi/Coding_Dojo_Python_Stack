@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View One Pet</title>
+</head>
+<body>
+    <a href="/mypets/home">Home</a> |
+    <a href="/mypets/reminders">Reminders</a> |
+    <a href="/mypets/budget">Budget</a> |
+    <a href="/users/logout">Logout</a><br><br><br>
+
+    <img src="" alt="pet image">
+    <h1>{{pet.name}}</h1>
+    <p>Species: {{pet.species}}</p>
+    <!-- <p>Breed: </p> -->
+    <p>Date of Birth: {{pet.dob}}</p>
+    <p>Weight: {{pet.weight}}</p>
+    <p>Diet: {{pet.diet}}</p>
+    <p>Medications: {{pet.on_meds}}</p><br><br><br>
+
+    <button><a href="/mypets/edit/{{pet.id}}">Edit Profile</a></button>
+    <button><a href="/mypets/">{{pet.name}}'s Reminders</a></button>
+</body>
+</html>

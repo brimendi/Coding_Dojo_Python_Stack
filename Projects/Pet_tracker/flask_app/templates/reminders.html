@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Reminders</title>
+</head>
+<body>
+    <a href="/mypets/home">Home</a> |
+    <a href="/mypets/reminders">Reminders</a> |
+    <a href="/mypets/budget">Budget</a> |
+    <a href="/users/logout">Logout</a>
+
+    {% for message in get_flashed_messages(category_filter =['success'])%}
+            <p>{{message}}</p>
+        {% endfor %}
+        {% for message in get_flashed_messages() %}
+            <p>{{message}}</p>
+        {% endfor %}
+
+    <div>
+        <div>
+            <h1>Reminders:</h1>
+            {%for reminder in all_reminders %}
+                <p>{{reminder.name}}</p>
+                <p>{{reminder.date}}</p>
+                {%if reminder.time%}
+                    <p>{{reminder.time}}</p>
+                {%endif%}
+                {%if reminder.address%}
+                    <p>{{reminder.address}}</p>
+                {%endif%}
+            {% endfor %}
+        </div>
+        <a href="/mypets/reminders/add">Add a Reminder</a>
+    </div>
+</body>
+</html>

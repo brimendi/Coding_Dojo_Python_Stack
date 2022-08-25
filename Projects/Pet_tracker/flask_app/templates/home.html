@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <a href="/mypets/home">Home</a> |
+    <a href="/mypets/reminders">Reminders</a> |
+    <a href="/mypets/budget">Budget</a> |
+    <a href="/users/logout">Logout</a>
+
+    <h1>Welcome, {{user.first_name}}!</h1>
+    <h1>My Pets:</h1>
+    
+    <div>
+        <!-- ALL PETS  INFO  -->
+        <div class="flex">
+        {% for pet in all_pets %}
+            <img src="" alt="pet image">
+            <h1><a href="/mypets/view_one/{{pet.id}}">{{pet.name}}</a></h1>
+            <a href="/mypets/reminders/add">Add a Reminder</a>
+        {% endfor %}
+        </div>
+    </div>
+        <!-- ADD A PET BUTTON  -->
+    <button><a href="/mypets/add">Add a Pet</a></button>
+</body>
+</html>

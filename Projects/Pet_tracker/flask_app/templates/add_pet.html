@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Pet</title>
+</head>
+<body>
+    <a href="/mypets/home">Home</a> |
+    <a href="/mypets/reminders">Reminders</a> |
+    <a href="/mypets/budget">Budget</a> |
+    <a href="/users/logout">Logout</a>
+
+    {% for message in get_flashed_messages(category_filter =['success'])%}
+        <p>{{message}}</p>
+    {% endfor %}
+    {% for message in get_flashed_messages() %}
+        <p>{{message}}</p>
+    {% endfor %}
+
+    <form action="/mypets/create" enctype="multipart/form-data" method="post">
+        <input type="file" name="file" id="file" autocomplete="off" required>
+        <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+        <label for="species">Species:</label>
+            <select name="species" id="species">
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+            </select>
+    <!-- <label for="breeds">Breeds:</label>
+            <select name="breeds" id="breeds">
+                <option value=""></option>
+            </select> -->
+        <label for="dob">Date of Birth:</label>
+            <input type="date" name="dob" id="dob">
+        <label for="weight">Weight:</label>
+            <input type="number" name="weight" id="weight">
+        <div>
+                <!-- RADIO BUTTON VALUES  -->
+            Currently on medications?
+            <label for="yes">Yes</label>
+            <input type="radio" name="on_meds" id="yes" value="1" {% if pet.on_meds == 1 %}checked{%endif%}>
+            <label for="no">No</label>
+            <input type="radio" name="on_meds" id="no" value="0" {% if pet.on_meds == 0 %}checked{%endif%}>
+        </div>
+        <label for="if_yes">If yes, what medications?</label>
+            <input type="text" name="if_yes" id="if_yes">
+        <button type="submit">Add</button>
+    </form> 
+</body>
+</html>
